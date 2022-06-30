@@ -1,14 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import DataList from './Database/Database.json';
+import Axios from 'axios';
+//api imported from : https://jsonplaceholder.typicode.com/posts  instead of using local json db;
 
 function App() {
-  // Declare a new state variable, which we'll call "count"
-  const [data, setData] = useState(0);
-console.log(DataList)
+  const [books, setBooks] = useState([]);
+
+  useEffect(()=>{
+    Axios.get('https://jsonplaceholder.typicode.com/posts')
+    .then(res=>{
+      console.log(res)
+      setBooks(res.data)
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+  })
+  
   return (
-    <div>
-       hi
+    <div> 
+          {books.map(book=>(
+            <p>{book.title}</p> 
+  ))}
+
+      {/* <AllBooks data={data = DataList} /> */}
     </div>
   );
 }
