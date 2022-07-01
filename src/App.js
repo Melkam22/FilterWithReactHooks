@@ -16,11 +16,22 @@ function App() {
     .catch(err=>{
     })
   })
+
+//   const filtered = (e) => {
+//   const comparedItem = e.target.value;
+//   // const filteredValue = myProps.filter((item)=>{
+//   //   return item.title(comparedItem);
+//   // })
+//   console.log(comparedItem)
+// }
+
+
   
   return (
     <div className='mainFile'> 
-    <FilterBook/>
+    <FilterBook myData={books}/>
     <AllBooks myProps={books} />
+    {/* <AllBooks myProps={filtered.length === 0 ? books : filteredValue} /> */}
     </div>
   );
 }
