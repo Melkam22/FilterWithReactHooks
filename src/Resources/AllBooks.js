@@ -1,15 +1,21 @@
 import React from 'react';
-
+import EachBook from './EachBook';
 
 function AllBooks({myProps=[]}) {
- // const [data, setData] = useState();
- console.log(myProps)
+
+let result = myProps.map((books)=>{
+    return(
+        <div>
+            <EachBook eachData={books=books} />    
+        </div>
+    )
+})
+
   return (
     <div>
-      {myProps.map(books=>(
-            <p key={books.id}>{books.title}</p> 
-  ))}
+        {result}
     </div>
+ 
   );
 }
 
