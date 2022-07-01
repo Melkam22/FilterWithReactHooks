@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Axios from 'axios';
 //api imported from : https://jsonplaceholder.typicode.com/posts  instead of using local json db;
+import AllBooks from './Resources/AllBooks';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -9,21 +10,18 @@ function App() {
   useEffect(()=>{
     Axios.get('https://jsonplaceholder.typicode.com/posts')
     .then(res=>{
-      console.log(res)
       setBooks(res.data)
     })
     .catch(err=>{
-      console.log(err)
     })
   })
   
   return (
     <div> 
-          {books.map(book=>(
-            <p>{book.title}</p> 
-  ))}
-
-      {/* <AllBooks data={data = DataList} /> */}
+          {/* {books.map(book=>(
+            <p key={book.id}>{book.title}</p> 
+  ))} */}
+    <AllBooks myProps={books} />
     </div>
   );
 }

@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
-function AllBooks({data}) {
+function AllBooks({myProps=[]}) {
  // const [data, setData] = useState();
+ console.log(myProps)
   return (
     <div>
-      <h2>All books</h2>  
+      {myProps.map(books=>(
+            <p key={books.id}>{books.title}</p> 
+  ))}
     </div>
   );
 }
