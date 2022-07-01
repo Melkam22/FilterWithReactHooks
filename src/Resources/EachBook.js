@@ -1,10 +1,9 @@
 import React from 'react';
 
-
 function EachBook({eachData}) {
-    //console.log(eachData)
+ 
   return (
-    <div className='eachData'>
+    <div className='eachBook'>
        <p>{eachData.id}</p>
        <p>{eachData.title}</p>
        <p>{eachData.body}</p>

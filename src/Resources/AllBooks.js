@@ -5,14 +5,14 @@ function AllBooks({myProps=[]}) {
 
 let result = myProps.map((books)=>{
     return(
-        <div>
+        <div className='allBooks'>
             <EachBook eachData={books=books} />    
         </div>
     )
 })
 
   return (
-    <div>
+    <div className='showAllBooks'>
         {result}
     </div>
  

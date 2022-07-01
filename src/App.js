@@ -17,10 +17,7 @@ function App() {
   })
   
   return (
-    <div> 
-          {/* {books.map(book=>(
-            <p key={book.id}>{book.title}</p> 
-  ))} */}
+    <div className='mainFile'> 
     <AllBooks myProps={books} />
     </div>
   );
