@@ -6,7 +6,7 @@ function AllBooks({myProps=[]}) {
 let result = myProps.map((books)=>{
     return(
         <div className='allBooks'>
-            <EachBook eachData={books=books} />    
+            <EachBook eachData={books=books} />
         </div>
     )
 })

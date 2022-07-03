@@ -3,10 +3,11 @@ import './App.css';
 import Axios from 'axios';
 //api imported from : https://jsonplaceholder.typicode.com/posts  instead of using local json db;
 import AllBooks from './Resources/AllBooks';
-import FilterBook from './Resources/FilterBook';
+//import FilterBook from './Resources/FilterBook';
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [filtered, setFiltered] = useState([])
 
   useEffect(()=>{
     Axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -15,23 +16,37 @@ function App() {
     })
     .catch(err=>{
     })
-  })
+  }, [])
+//
 
-//   const filtered = (e) => {
-//   const comparedItem = e.target.value;
-//   // const filteredValue = myProps.filter((item)=>{
-//   //   return item.title(comparedItem);
-//   // })
-//   console.log(comparedItem)
-// }
+const filterItem = (e) => {
+  setFiltered(e.target.value);
+}
+//
 
+const filterFunction = !filtered
+? books
+: books.filter((item) =>
+    item.title.includes(filtered)
+  );
+
+console.log(filterFunction)
+
+ 
 
   
   return (
     <div className='mainFile'> 
-    <FilterBook myData={books}/>
-    <AllBooks myProps={books} />
-    {/* <AllBooks myProps={filtered.length === 0 ? books : filteredValue} /> */}
+    <div className='filterBook'>
+        <h2>Filter books with different components and reacthooks</h2>
+        <div className='searchBar'>
+            <input type="text" placeholder="find title" value={filtered} onChange={filterItem}/>  
+        </div> 
+    </div>
+    {/* <FilterBook myData={books}/>  */}
+    {/* <FilterBook books={books}/> */}
+    {/* <AllBooks myProps={books} /> */}
+    <AllBooks myProps={filterFunction.length === 0  ? books : filterFunction}/>
     </div>
   );
 }
