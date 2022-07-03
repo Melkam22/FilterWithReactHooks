@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Axios from 'axios';
-//api imported from : https://jsonplaceholder.typicode.com/posts  instead of using local json db;
 import AllBooks from './Resources/AllBooks';
-//import FilterBook from './Resources/FilterBook';
 
 function App() {
   const [books, setBooks] = useState([]);
   const [filtered, setFiltered] = useState([])
 
+  //imported data via api instead of using local json db;
   useEffect(()=>{
     Axios.get('https://jsonplaceholder.typicode.com/posts')
     .then(res=>{
@@ -16,22 +15,16 @@ function App() {
     })
     .catch(err=>{
     })
-  }, [])
-//
+  })
 
 const filterItem = (e) => {
   setFiltered(e.target.value);
 }
-//
 
+//const upperCaseResult = filtered.toUpperCase();
 const filterFunction = !filtered
 ? books
-: books.filter((item) =>
-    item.title.includes(filtered)
-  );
-
-console.log(filterFunction)
-
+: books.filter(item => item.title.includes(filtered));
  
 
   
@@ -43,9 +36,6 @@ console.log(filterFunction)
             <input type="text" placeholder="find title" value={filtered} onChange={filterItem}/>  
         </div> 
     </div>
-    {/* <FilterBook myData={books}/>  */}
-    {/* <FilterBook books={books}/> */}
-    {/* <AllBooks myProps={books} /> */}
     <AllBooks myProps={filterFunction.length === 0  ? books : filterFunction}/>
     </div>
   );

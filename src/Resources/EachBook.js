@@ -8,12 +8,6 @@ function EachBook({eachData}) {
        <p>{eachData.title}</p>
        <p>{eachData.body}</p>
     </div>
-
-    // <div className='eachBook'>
-    //    <p>{passEach.id}</p>
-    //    <p>{passEach.title}</p>
-    //    <p>{passEach.body}</p>
-    // </div>
   );
 }
 
