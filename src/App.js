@@ -12,21 +12,19 @@ function App() {
     Axios.get('https://jsonplaceholder.typicode.com/posts')
     .then(res=>{
       setBooks(res.data)
+      console.log(res.data)
     })
     .catch(err=>{
     })
-  })
+  },[])//to avoid loop on fetching
 
 const filterItem = (e) => {
   setFiltered(e.target.value);
 }
-
+ 
 const filterFunction = !filtered
 ? books
-: books.filter((item) => item.title.includes(filtered));
- 
-console.log(filtered)
-
+: books.filter((item) => item.title.toLowerCase().includes(filtered.toLowerCase()));
   
   return (
     <div className='mainFile'> 
