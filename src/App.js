@@ -21,11 +21,11 @@ const filterItem = (e) => {
   setFiltered(e.target.value);
 }
 
-//const upperCaseResult = filtered.toUpperCase();
 const filterFunction = !filtered
 ? books
-: books.filter(item => item.title.includes(filtered));
+: books.filter((item) => item.title.includes(filtered));
  
+console.log(filtered)
 
   
   return (
